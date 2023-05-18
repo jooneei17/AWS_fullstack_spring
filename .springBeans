@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beansProjectDescription>
+	<version>1</version>
+	<pluginVersion><![CDATA[3.9.13.202006180736-RELEASE]]></pluginVersion>
+	<configSuffixes>
+		<configSuffix><![CDATA[xml]]></configSuffix>
+	</configSuffixes>
+	<enableImports><![CDATA[false]]></enableImports>
+	<configs>
+		<config>src/main/resources/ioc1.xml</config>
+		<config>src/main/resources/ioc3.xml</config>
+		<config>src/main/resources/ioc4.xml</config>
+		<config>src/main/resources/ioc5.xml</config>
+		<config>src/main/resources/ioc6.xml</config>
+		<config>src/main/resources/student.xml</config>
+		<config>src/main/resources/shape.xml</config>
+		<config>src/main/resources/shape2.xml</config>
+		<config>src/main/resources/magic.xml</config>
+		<config>src/main/resources/emp.xml</config>
+		<config>src/main/resources/aop4.xml</config>
+		<config>src/main/resources/small3.xml</config>
+		<config>src/main/resources/aop5.xml</config>
+		<config>src/main/resources/small4.xml</config>
+		<config>src/main/resources/aop6.xml</config>
+		<config>src/main/resources/small5.xml</config>
+	</configs>
+	<autoconfigs>
+	</autoconfigs>
+	<configSets>
+	</configSets>
+</beansProjectDescription>

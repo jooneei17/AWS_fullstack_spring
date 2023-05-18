@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd">
+
+	<bean class="aop.aop5.MyDependency" id="myDependency" />
+	<bean class="aop.aop5.MyBean" p:dependency-ref="myDependency" id="myBean" />
+	<bean class="aop.aop5.MyAdvice" id="myAdvice" />
+	<aop:config>
+		<aop:aspect ref="myAdvice">
+			<aop:pointcut expression="execution(* hello(..)) and args(intValue)" id="pc"/>
+			<aop:before method="simple" pointcut-ref="pc"/>
+			
+			<aop:after-returning method="simple" pointcut-ref="pc"/>
+			<aop:around method="around" pointcut="execution(* run(..))"/>
+		</aop:aspect>
+	</aop:config>
+</beans>

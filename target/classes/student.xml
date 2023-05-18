@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.3.xsd">
+
+	<bean class="student.Student" id="student1">
+		<constructor-arg value="1" />
+		<constructor-arg>
+			<value>홍길동</value>
+		</constructor-arg>
+		<constructor-arg value="90" />
+	</bean>
+
+	<bean class="student.Student" id="student2">
+		<constructor-arg value="2" />
+		<constructor-arg>
+			<value>김길동</value>
+		</constructor-arg>
+		<constructor-arg value="80" />
+	</bean>
+	
+	<bean class="student.Student" id="student3">
+		<property name="no" value="3"></property>
+		<property name="name" value="박길동"></property>
+		<property name="score" value="88"></property>
+	</bean>
+	
+	<bean class="student.CustomStudent" id="customStudent">
+		<property name="no" value="#{student1.no}" />
+		<property name="name" >
+			<value>#{student2.name}</value>
+		</property>
+		<property name="age" value="20" />
+	</bean>
+	
+	<bean class="student.StudentService" id="studentService" >
+		<property name="students">
+			<list>
+				<ref bean="student1" />
+				<bean class="student.Student">
+					<constructor-arg value="5"/>
+					<constructor-arg value="이길동"/>
+					<constructor-arg value="50"/>
+				</bean>
+			</list>
+		</property>
+	</bean>
+	
+	<util:list id="myList">
+		<value>가</value>
+		<value>나</value>
+		<value>1</value>
+	</util:list>
+		
+	
+
+</beans>

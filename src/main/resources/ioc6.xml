@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean class="ioc.ioc6.Programmer" id="programmer" />
+	<bean class="ioc.ioc6.Designer" id="designer" />
+	<bean class="ioc.ioc6.Develope" id="develope" > 
+		<constructor-arg>
+			<ref bean="designer" />
+		</constructor-arg>
+		<constructor-arg ref="programmer" />
+	
+	</bean>
+
+</beans>
+
+
