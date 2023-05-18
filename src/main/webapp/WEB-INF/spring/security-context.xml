@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:security="http://www.springframework.org/schema/security"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+
+	<bean class="co.jmymble.security.CustomUserDetailsService" id="customUserDetailsService" />
+	<bean class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder" id="passwordEncoder" />
+	<security:http>
+		<security:form-login login-page="/member/login"/>
+		
+		
+<!-- 		<security:intercept-url pattern="/sample/member" access=""/> -->
+		<security:intercept-url pattern="/sample/member" access="hasRole('ROLE_MANAGER')"/>
+		<security:intercept-url pattern="/sample/admin" access="hasRole('ROLE_ADMIN')"/>
+		<security:logout logout-url="/sample/logout" logout-success-url="/sample/all"/>
+<!-- 		<security:csrf disabled="true"/> -->
+		<security:access-denied-handler error-page="/accessError"/>
+		<security:remember-me data-source-ref="dataSource" token-validity-seconds="604800"/>
+	</security:http>
+	<security:authentication-manager>
+		<security:authentication-provider user-service-ref="customUserDetailsService">
+			<security:password-encoder ref="passwordEncoder"/>
+			
+<!-- 			<security:jdbc-user-service data-source-ref="dataSource"  -->
+<!-- 			users-by-username-query="select userid username, userpw password, enabled from tbl_member where userid = ?" -->
+<!-- 			authorities-by-username-query="select userid username, auth authority from tbl_auth where userid = ?" -->
+<!-- 			/> -->
+<!-- 			<security:user-service> -->
+<!-- 				<security:user name="member" password="{noop}member" authorities="ROLE_MEMBER"/> -->
+<!-- 				<security:user name="admin" password="{noop}admin" authorities="ROLE_ADMIN, ROLE_MEMBER"/> -->
+<!-- 			</security:user-service> -->
+		</security:authentication-provider>
+	</security:authentication-manager>
+</beans>
